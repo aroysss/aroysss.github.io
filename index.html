@@ -3,9 +3,9 @@
     <!--Head-->
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="width=device-width"/>
+		<link rel="icon" href="icon.jpg">
         <title>Adriana's Portfolio</title>
-		<link rel="icon" type="image" href="icon.png" alt="portfolio">
         <link rel="stylesheet" type="text/css" href="portfolio.css">
     </head>
 
@@ -15,30 +15,31 @@
         <!--Navbar-->
         <div class="Navbar">
             <a class="active" href="#Home">Home</a>
+			<!-- new -->
+			<a href="#Slideshow">Slideshow</a>
             <a href="#About">About</a>
             <a href="#GitHub">GitHub</a>
-            <a href="#Contact">Contact</a>
-        </div>
-
+			<a onclick="openForm()" ondblclick="closeForm()" class="contact">Contact</a>
+        </div>	
         <!--Breaks inserted to add space between navbar and the first heading-->
         <br>
         <br>
 
-        <!--Background video-->
+        <!--background video-->
         <div id="Home">
             <video autoplay muted loop id="Typing_Video">
-                <source src="giphy1.gif" style="width:1200px;" type="video/mp4">
+                <source src="video.mp4" style="width:1200px;" type="video/mp4">
                 <!--Display message if video fails to run-->
                 Your browser does not support HTML5 video.
             </video>
         </div>
 
-        <!--Video text-->
+        <!--video text-->
         <div class="Video_Text">
             <h1 class="white-text"><strong>Adriana's Portfolio</strong></h1>
             <strong>
                 <p class="center">
-                    <q> If you are working on something exciting that you are really
+                    <q> If you are working on something exciting that you really
                         <br>care about, you don't have to be pushed.
                         <br>The vision pulls you.
                     </q>
@@ -51,7 +52,67 @@
             </strong>
         </div>
 
-        <!--About section-->
+<!-- slideshow section -->
+        <div id="Slideshow">
+            <div id="Slideshow_Background"> 
+                <div id="Slideshow_Container">
+				
+                    <!-- Slide 1 of 6 -->
+                    <div class="mySlides">
+                        <img class="Slideshow_Images" src="portrait.jpg" alt="Picture of me">
+                        <div class="text">I'm available to assist you on your project!</div>
+                    </div>
+					
+                    <!-- Slide 2 of 6 -->
+                    <div class="mySlides">
+                        <img class="Slideshow_Images" src="fullstack.png" alt="HTML, CSS, and JS logos"> 
+                        <div class="text">I am a full-stack software developer,<br> trained in:<br>HTML, CSS, JavaScript,</div>
+                    </div>
+					
+                    <!-- Slide 3 of 6 -->
+                    <div class="mySlides">
+                        <img class="Slideshow_Images" src="python.jpg" alt="Python logo">
+                        <div class="text">the popular programming language Python,</div>
+                    </div>
+					
+                    <!-- Slide 4 of 6 -->
+                    <div class="mySlides">
+                        <img class="Slideshow_Images" src="c#.jpg" alt="C# logo">
+                        <div class="text">C#, .NET Framework, ASP.NET, MVC, </div>
+                    </div>
+					
+                    <!-- Slide 5 of 6 -->
+                    <div class="mySlides">
+                        <img class="Slideshow_Images" src="sql.jpg" alt="SQL logo"> 
+                        <div class="text">back end development, databases and SQL.</div>
+                    </div>
+					
+                    <!-- Slide 6 of 6 -->
+                    <div class="mySlides">
+                        <img class="Slideshow_Images" src="contact.gif" alt="Replace with a picture of your choosing"> 
+                        <div class="text"><a class="white-text contact" onclick="openForm()">Contact me!</a></div> 
+                    </div>
+					
+                    <!-- prev and next buttons -->
+                    <a class="Previous" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="Next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <br>
+
+                <!-- slideshow dots -->
+                <div style="text-align: center">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span> 
+                    <span class="dot" onclick="currentSlide(4)"></span> 
+                    <span class="dot" onclick="currentSlide(5)"></span> 
+                    <span class="dot" onclick="currentSlide(6)"></span> 
+                </div>
+            </div>
+        </div>
+
+
+        <!--about section-->
         <div class="Row" id="About">
             <!--Left column-->
             <div class="Column_2">
@@ -78,7 +139,7 @@
                 <p>
                     My coding projects can be viewed on my GitHub profile here:
                     <br>
-                    <p class="center"><a href="https://github.com/the-tech-academy" target="_blank">The Tech Academy Github</a></p>
+                    <p class="center"><a href="https://github.com/the-tech-academy" target="_blank">My Github</a></p>
                 </p>
             </div>
             <!--Right column-->
@@ -89,24 +150,24 @@
 
         <!--Contact section-->
         <div class="Row" id="Contact">
-            <!--Contact image, left column-->
-            <div class="Column_2 Column_tall">
-                <img src="connect.jpg" style="width:50rem; height:22rem;" alt="contact photo">
-            </div>
-            <!--Contact form, right column-->
-            <div class="Column_1 Column_tall">
-                <h1>Contact</h1>
-                <!--This specifies where and how to send the form data; we are leaving it blank-->
-                <form action="" method="POST"> <!-- Here we are utilizing a 3rd party service to submit the contact form data, insert your formspree endpoint in the action attribute -->
-                    <label>Name:</label>
-                        <input type="text" placeholder="Please enter your name here">
-                    <label>Email:</label>
-                        <input type="text" id="Email" name="Email" placeholder="Please enter your email here">
-                    <label>Message:</label>
-                        <input type="text" id="Message" name="Message" placeholder="Please write your message here">
-                        <input type="submit" value="SUBMIT">
+		<div id="Contact">
+           <button onclick="openForm()" class="Pop_Up_Button">CONTACT</button>
+           <div class="form-popup" id="myForm">
+                <form action="https://formspree.io/info@learncodinganywhere.com" method="POST" class="form-container"> <!-- Here we are using a free online service from https://formspree.io/ to send our contact form to an email address of our choosing - note: it will not run unless live on the internet, you have to push it to your online website first -->
+                    <h1></h1>
+                    <label for="name"><b>Name</b></label>
+                      <input type="text" placeholder="Type your name here" name="name" required>
+                    <label for="phone"><b>Phone</b></label>
+                      <input type="text" placeholder="Type your phone number here" name="phone">
+                    <label for="email"><b>Email</b></label>		
+                      <input type="text" placeholder="Type your email address here" name="email" required>
+                    <label for="message"><b>Message</b></label>
+                      <input type="text" placeholder="Type your message here" name="message">
+         
+                    <button type="submit" class="btn">SUBMIT</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">CLOSE</button>
                 </form>
-            </div>
+           </div>
         </div>
 
         <!--Footer section-->
@@ -116,5 +177,6 @@
                 <br>
             </p>
         </footer>
+		<script src="portfolio.js"></script>
     </body>
 </html>
