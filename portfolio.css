@@ -72,7 +72,7 @@ q {
 }
 
 img {
-    filter: grayscale(80%); 
+    filter: blur(0px); 
     border-radius: 8px; 
     max-width: 100%;
     max-height: 100%; 
@@ -183,7 +183,12 @@ footer {
 }
 
 .mySlides{
+	filter: blur(3.5px);
     display: none;
+}
+
+.mySlides:hover {
+	filter: blur(0px);
 }
 
 #Slideshow_Container {
@@ -296,11 +301,15 @@ footer {
 }
 
 .Column_2 {
+	filter: blur(2px);
     float: left;
     width: 50%;
     padding: 1.6%;
     height: 450px;
     background-color: #4d4d4d;
+}
+.Column_2:hover {
+	filter:blur(0px);
 }
 
 .Row:after {
